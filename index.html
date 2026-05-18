@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ABDUR 9X</title>
@@ -176,6 +177,50 @@
       background: rgba(255,255,255,0.03);
     }
 
+    .socials a i {
+      margin-right: 8px;
+    }
+
+    .floating-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: #ff00ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      color: black;
+      text-decoration: none;
+      box-shadow: 0 0 30px #ff00ff;
+      animation: floatGlow 2s infinite alternate;
+      z-index: 999;
+      transition: 0.3s;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.12) rotate(8deg);
+    }
+
+    @keyframes floatGlow {
+      from {
+        box-shadow: 0 0 15px #ff00ff;
+      }
+      to {
+        box-shadow: 0 0 35px #ff00ff;
+      }
+    }
+
+    .typing {
+      font-size: 20px;
+      color: #ccc;
+      margin-top: 10px;
+      height: 30px;
+    }
+
     .socials a:hover {
       background: #ff00ff;
       color: black;
@@ -332,15 +377,29 @@
     gaming vibe and modern UI design.
   </p>
 
+  <div class="typing" id="typing"></div>
+
   <div class="buttons">
     <a href="#" class="btn">JOIN NOW</a>
     <a href="#" class="btn">DOWNLOAD</a>
   </div>
 
   <div class="socials">
-    <a href="#">Telegram</a>
-    <a href="#">Discord</a>
-    <a href="#">YouTube</a>
+    <a href="https://t.me/yourusername">
+      <i class="fab fa-telegram"></i> Telegram
+    </a>
+
+    <a href="https://discord.gg/yourserver">
+      <i class="fab fa-discord"></i> Discord
+    </a>
+
+    <a href="https://youtube.com/@yourchannel">
+      <i class="fab fa-youtube"></i> YouTube
+    </a>
+
+    <a href="https://wa.me/8800000000000">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
   </div>
 
   <div class="stats">
@@ -384,6 +443,10 @@
   © 2026 ABDUR 9X — All Rights Reserved
 </footer>
 
+<a href="https://t.me/yourusername" class="floating-btn">
+  <i class="fab fa-telegram"></i>
+</a>
+
 <script>
   window.onload = () => {
     setTimeout(() => {
@@ -404,6 +467,37 @@
 
     particles.appendChild(span);
   }
+
+  const texts = [
+    'ELITE DEVELOPER',
+    'HACKER STYLE DESIGN',
+    'MODERN UI CREATOR',
+    'ABDUR 9X OFFICIAL'
+  ];
+
+  let count = 0;
+  let index = 0;
+  let currentText = '';
+  let letter = '';
+
+  (function type() {
+    if (count === texts.length) {
+      count = 0;
+    }
+
+    currentText = texts[count];
+    letter = currentText.slice(0, ++index);
+
+    document.getElementById('typing').textContent = letter;
+
+    if (letter.length === currentText.length) {
+      count++;
+      index = 0;
+      setTimeout(type, 1200);
+    } else {
+      setTimeout(type, 100);
+    }
+  })();
 </script>
 
 </body>
